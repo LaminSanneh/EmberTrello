@@ -1,16 +1,21 @@
 .list{
-  border: 1px solid blue;
   min-height: 100px;
   padding: 10px;
   width: 200px;
+  background-color: #E2E4E6;
+  margin: 0px 0px 10px;
+  border-radius: 2px;
 }
 
 .card{
-  border: 1px solid red;
+  padding: 5px;
   cursor: move;
+  margin: 0px 0px 10px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
 
   &:hover{
-    background-color: lighten(#000000, 50%);
+    background-color: lighten(#E2E4E6, 5%);
   }
 }
 
