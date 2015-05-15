@@ -8,10 +8,14 @@
 .card{
   border: 1px solid red;
   cursor: move;
+
+  &:hover{
+    background-color: lighten(#000000, 50%);
+  }
 }
 
 .is-being-dragged{
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .is-being-dragged-over{
