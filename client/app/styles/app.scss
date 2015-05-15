@@ -1,0 +1,29 @@
+.list{
+  border: 1px solid blue;
+  min-height: 100px;
+  padding: 10px;
+  width: 200px;
+}
+
+.card{
+  border: 1px solid red;
+  cursor: move;
+}
+
+.is-being-dragged{
+  opacity: 0.4;
+}
+
+.is-being-dragged-over{
+  border: 1px dashed #000000;
+}
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}

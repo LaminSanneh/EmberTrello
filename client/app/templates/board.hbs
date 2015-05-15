@@ -1,0 +1,16 @@
+<h2>{{model.title}}</h2>
+<div class="row">
+    {{#each item in model.lists}}
+      <div class="lists">
+          <div class="list">
+            <h3>{{item.title}}</h3>
+            <div class="list__cards">
+                {{#each card in item.cards}}
+                  {{list-card card=card}}
+                {{/each}}
+            </div>
+          </div>
+      </div>
+    {{/each}}
+</div>
+{{outlet}}
