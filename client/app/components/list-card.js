@@ -12,8 +12,6 @@ export default Ember.Component.extend({
     console.log('Drag');
     console.log(this.get('dragSourceElement'));
     e.dataTransfer.effectAllowed = 'move';
-    //e.dataTransfer.setData('text/html', this.element.innerHTML);
-    //window.dragSourceElement = this.element;
     window.dragSource = this;
   },
   dragEnd: function(e){
@@ -35,11 +33,6 @@ export default Ember.Component.extend({
   },
   drop: function(e) {
     e.preventDefault();
-    //var dragSourceElement = window.dragSourceElement;
-    //if(dragSourceElement != this.$().get(0)){
-    //  dragSourceElement.innerHTML = this.$().html();
-    //  this.$().html(e.dataTransfer.getData('text/html'));
-    //}
     window.dragTarget = this;
     this.set('isBeingDragged', false);
     this.set('isBeingDraggedOver', false);

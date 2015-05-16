@@ -29,8 +29,8 @@ export default Ember.Route.extend({
                 if(index == 0){
                   return item.get('sortOrder');
                 }
-                if(previousValue.get('sortOrder') > item.get('sortOrder')){
-                  return previousValue.get('sortOrder');
+                if(previousValue > item.get('sortOrder')){
+                  return previousValue;
                 }
                 else{
                   return item.get('sortOrder');

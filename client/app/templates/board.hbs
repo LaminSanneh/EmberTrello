@@ -1,12 +1,5 @@
 <h2>{{model.title}}</h2>
-{{#inline-model-creator modelType="list"
-    parentModelType="board"
-    parentId=model.id
-    action="createNewModel"
-    placeholder='Enter new list title'
-}}
-    <span>+ Add List</span>
-{{/inline-model-creator}}
+{{partial "partials/list-inline-model-creator"}}
 <div class="row">
     {{#each item in model.lists}}
       <div class="lists">
@@ -22,14 +15,7 @@
                 {{#each card in item.cards}}
                   {{list-card card=card}}
                 {{/each}}
-                {{#inline-model-creator modelType="card"
-                  parentModelType="list"
-                  parentId=item.id
-                  action="createNewModel"
-                  placeholder='Enter new card title'
-                }}
-                    <span>+ Add Card</span>
-                {{/inline-model-creator}}
+                {{partial "partials/card-inline-model-creator"}}
             </div>
           </div>
       </div>
