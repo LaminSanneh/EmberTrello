@@ -6,10 +6,11 @@ export default Ember.Component.extend({
   click: function(){
     this.set('inEditMode', true);
     this.set('isFocussed', true);
+    this.set('title', this.get('modelItem.title'));
   },
   actions: {
-    createNewModel: function(title, modelType, parentModelType, parentId){
-      this.sendAction('action', title, modelType, parentModelType,parentId);
+    updateModel: function(title, modelType){
+      this.sendAction('action', title, modelType);
       this.set('title', '');
       this.set('inEditMode', false);
     },

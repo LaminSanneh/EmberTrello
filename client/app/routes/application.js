@@ -8,18 +8,48 @@ export default Ember.Route.extend({
         title: title
       };
 
-      //modelProperties[parentModelType] = this.store.find(parentModelType, parentId);
+      //if(modelType == 'card'){
+      //  modelProperties['sortOrder'] =
+      //}
+
       var model = this.store.createRecord(modelType, modelProperties);
 
-      model.save().then(function(modelSaved){
-        console.log(modelSaved);
-        this.store.find(parentModelType, parentId).then(function(parentModel){
+      this.store.find(parentModelType, parentId).then(function(parentModel){
+        var maxSortOrder = null, relatedHasMany;
+        model.save().then(function(modelSaved){
+          console.log(parentModel);
+          if(modelType == 'card'){
+            relatedHasMany = parentModel.get(modelType+'s');
+
+            if(relatedHasMany.get('length') == 0){
+              maxSortOrder = 0;
+            }
+            else{
+              maxSortOrder = relatedHasMany.reduce(function(previousValue, item, index, enumerable){
+                if(index == 0){
+                  return item.get('sortOrder');
+                }
+                if(previousValue.get('sortOrder') > item.get('sortOrder')){
+                  return previousValue.get('sortOrder');
+                }
+                else{
+                  return item.get('sortOrder');
+                }
+              });
+            }
+            model.set('sortOrder', maxSortOrder+1);
+          }
           model.set(parentModelType, parentModel);
           parentModel.get(modelType+'s').pushObject(model);
-          parentModel.get(modelType+'s').save();
+          model.save();
           parentModel.save();
         });
-      }.bind(this));
+      });
+    },
+    updateModel: function(title, model){
+      console.log(arguments);
+      model.set('title', title);
+      model.save();
     }
   }
 });

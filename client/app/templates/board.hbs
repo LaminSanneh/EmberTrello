@@ -11,7 +11,13 @@
     {{#each item in model.lists}}
       <div class="lists">
           <div class="list">
-            <h3>{{item.title}}</h3>
+            {{#inline-model-editor
+              action="updateModel"
+              placeholder='Enter new list title'
+              modelItem=item
+            }}
+              <h3>{{item.title}}</h3>
+            {{/inline-model-editor}}
             <div class="list__cards">
                 {{#each card in item.cards}}
                   {{list-card card=card}}
