@@ -6,17 +6,15 @@ export default Ember.Component.extend({
   draggable: true,
   classNames: ['card'],
   isBeingDragged: false,
-  didInsertElement: function(){
-
-  },
   dragStart: function(e){
     this.set('isBeingDragged', true);
-    this.set('dragSourceElement', this.element);
+    //this.set('dragSourceElement', this.element);
     console.log('Drag');
     console.log(this.get('dragSourceElement'));
     e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', this.element.innerHTML);
-    window.dragSourceElement = this.element;
+    //e.dataTransfer.setData('text/html', this.element.innerHTML);
+    //window.dragSourceElement = this.element;
+    window.dragSource = this;
   },
   dragEnd: function(e){
     this.set('isBeingDragged', false);
@@ -37,12 +35,23 @@ export default Ember.Component.extend({
   },
   drop: function(e) {
     e.preventDefault();
-    var dragSourceElement = window.dragSourceElement;
-    if(dragSourceElement != this.$().get(0)){
-      dragSourceElement.innerHTML = this.$().html();
-      this.$().html(e.dataTransfer.getData('text/html'));
-    }
+    //var dragSourceElement = window.dragSourceElement;
+    //if(dragSourceElement != this.$().get(0)){
+    //  dragSourceElement.innerHTML = this.$().html();
+    //  this.$().html(e.dataTransfer.getData('text/html'));
+    //}
+    window.dragTarget = this;
     this.set('isBeingDragged', false);
     this.set('isBeingDraggedOver', false);
+    var sourceCard = window.dragSource.get('card'),
+        sourceSortOrder = sourceCard.get('sortOrder'),
+        targetCard = window.dragTarget.get('card'),
+        targetSortOrder = targetCard.get('sortOrder');
+
+    sourceCard.set('sortOrder', targetSortOrder);
+    targetCard.set('sortOrder', sourceSortOrder);
+
+    window.dragSource.set('card', targetCard);
+    window.dragTarget.set('card', sourceCard);
   }
 });

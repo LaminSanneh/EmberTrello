@@ -1,0 +1,7 @@
+{{#if inEditMode }}
+  <form {{action "createNewModel" title modelType parentModelType parentId on="submit" }}>
+    {{input value=title placeholder=placeholder autofocus="true" focus-out="lostFocus" escape-press="lostFocus"}}
+  </form>
+{{else}}
+  {{yield}}
+{{/if}}

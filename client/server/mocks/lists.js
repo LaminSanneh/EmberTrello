@@ -2,7 +2,7 @@ module.exports = function(app) {
   var express = require('express');
   var listsRouter = express.Router();
 
-  var lists = [
+  var lists = app.locals.lists = [
     {
       id: 1,
       title: 'List 1',
@@ -45,81 +45,96 @@ module.exports = function(app) {
     }
   ];
 
-  var cards = [
+  var cards = app.locals.cards = [
     {
       id: 1,
       title: 'Card 1',
-      list: 1
+      list: 1,
+      sortOrder: 1
     },
     {
       id: 2,
       title: 'Card 2',
-      list: 1
+      list: 1,
+      sortOrder: 2
     },
     {
       id: 3,
       title: 'Card 3',
-      list: 2
+      list: 2,
+      sortOrder: 1
     },
     {
       id: 4,
       title: 'Card 4',
-      list: 2
+      list: 2,
+      sortOrder: 2
     },
     {
       id: 5,
       title: 'Card 5',
-      list: 3
+      list: 3,
+      sortOrder: 1
     },
     {
       id: 6,
       title: 'Card 6',
-      list: 3
+      list: 3,
+      sortOrder: 2
     },
     {
       id: 7,
       title: 'Card 7',
-      list: 4
+      list: 4,
+      sortOrder: 1
     },
     {
       id: 8,
       title: 'Card 8',
-      list: 4
+      list: 4,
+      sortOrder: 2
     },
     {
       id: 9,
       title: 'Card 9',
-      list: 5
+      list: 5,
+      sortOrder: 2
     },
     {
       id: 10,
       title: 'Card 10',
-      list: 5
+      list: 5,
+      sortOrder: 1
     },
     {
       id: 11,
       title: 'Card 11',
-      list: 6
+      list: 6,
+      sortOrder: 2
     },
     {
       id: 12,
       title: 'Card 12',
-      list: 6
+      list: 6,
+      sortOrder: 1
     },
     {
       id: 13,
       title: 'Card 13',
-      list: 7
+      list: 7,
+      sortOrder: 1
     },
     {
       id: 14,
       title: 'Card 14',
-      list: 7
+      list: 7,
+      sortOrder: 2
     },
     {
       id: 15,
       title: 'Card 15',
-      list: 8
+      list: 8,
+      sortOrder: 1
     }
   ];
 

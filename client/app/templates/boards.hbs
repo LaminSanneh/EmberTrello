@@ -1,9 +1,14 @@
 <div class="row">
-  <h3>Boards List</h3>
+  <h3>Boards List </h3>
   <ul>
   {{# each item in model}}
-    <li>{{#link-to "board" item }}{{item.title}}{{/link-to}}</li>
+    <li>{{#link-to "board" item class="board-link" }}{{item.title}}{{/link-to}} <span {{action "deleteBoard" item}} >Delete</span> </li>
   {{/each}}
   </ul>
+</div>
+<div class="row">
+    <form {{action "createNewModel" modelData on="submit" }}>
+      {{input value=modelData.title placeholder='Enter new board title'}}
+    </form>
 </div>
 <div class="row">{{outlet}}</div>

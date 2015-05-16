@@ -2,7 +2,7 @@ module.exports = function(app) {
   var express = require('express');
   var boardsRouter = express.Router();
 
-  var boards = [
+  var boards = app.locals.boards = [
     {
       id: 1,
       title: 'Board 1',
