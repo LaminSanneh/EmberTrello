@@ -53,5 +53,8 @@ export default Ember.Component.extend({
 
     sourceCard.save();
     targetCard.save();
+  },
+  click: function(){
+    this.get('context.targetObject').transitionToRoute('board.editCard', this.get('card.list.board'), this.get('card'));
   }
 });
