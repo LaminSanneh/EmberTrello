@@ -9,8 +9,8 @@ export default Ember.Component.extend({
     this.set('title', this.get('modelItem.title'));
   },
   actions: {
-    updateModel: function(title, modelType){
-      this.sendAction('action', title, modelType);
+    updateModel: function(title, model){
+      this.sendAction('action', title, model);
       this.set('title', '');
       this.set('inEditMode', false);
     },

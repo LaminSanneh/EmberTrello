@@ -1,0 +1,10 @@
+{{#if overlayOpen}}
+  <div class="overlay-popup">
+      <span {{action 'closeOverlay' }} class="close-overlay-button" >Close</span>
+      <div class="row">
+        {{partial 'partials/card-inline-model-editor'}}
+      </div>
+    {{outlet}}
+  </div>
+  {{yield}}
+{{/if}}
