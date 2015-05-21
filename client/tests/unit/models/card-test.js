@@ -5,7 +5,7 @@ import {
 
 moduleForModel('card', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:list', 'model:board']
 });
 
 test('it exists', function(assert) {

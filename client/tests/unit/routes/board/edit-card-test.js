@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('route:edit-card', {
+moduleFor('route:board/edit-card', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
