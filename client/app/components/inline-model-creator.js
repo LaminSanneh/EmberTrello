@@ -13,7 +13,7 @@ export default Ember.Component.extend({
       this.set('title', '');
       this.set('inEditMode', false);
     },
-    lostFocus: function(){
+    closeForm: function(){
       console.log('Lost Focus');
       this.set('inEditMode', false);
     }

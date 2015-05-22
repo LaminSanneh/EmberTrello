@@ -1,6 +1,10 @@
 {{#if inEditMode }}
-  <form {{action "createNewModel" title modelType parentModelType parentId on="submit" }}>
-    {{input value=title placeholder=placeholder autofocus="true" focus-out="lostFocus" escape-press="lostFocus"}}
+  <form class="model-creator-form" {{action "createNewModel" title modelType parentModelType parentId on="submit" }}>
+    {{input value=title placeholder=placeholder autofocus="true" focus-out="closeForm" escape-press="closeForm"}}
+    <div class="row">
+        {{input type='submit' value='Save' }}
+        <span {{action 'closeForm' }} >cancel</span>
+    </div>
   </form>
 {{else}}
   {{yield}}
