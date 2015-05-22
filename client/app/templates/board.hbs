@@ -1,5 +1,4 @@
 <h2>{{model.title}}</h2>
-{{partial "partials/list-inline-model-creator"}}
 <div class="row">
     <div class="lists">
       {{#each item in model.lists}}
@@ -13,6 +12,9 @@
             </div>
           </div>
       {{/each}}
+      <div class="list create-list">
+        {{partial "partials/list-inline-model-creator"}}
+      </div>
     </div>
 </div>
 {{outlet}}
