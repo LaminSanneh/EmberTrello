@@ -1,8 +1,8 @@
 <h2>{{model.title}}</h2>
 {{partial "partials/list-inline-model-creator"}}
 <div class="row">
-    {{#each item in model.lists}}
-      <div class="lists">
+    <div class="lists">
+      {{#each item in model.lists}}
           <div class="list">
             {{partial "partials/list-inline-model-editor"}}
             <div class="list__cards">
@@ -12,7 +12,7 @@
                 {{partial "partials/card-inline-model-creator"}}
             </div>
           </div>
-      </div>
-    {{/each}}
+      {{/each}}
+    </div>
 </div>
 {{outlet}}
