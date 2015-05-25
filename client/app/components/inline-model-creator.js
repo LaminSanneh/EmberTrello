@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   },
   actions: {
     createNewModel: function(title, modelType, parentModelType, parentId){
-      this.sendAction('action', title, modelType, parentModelType,parentId);
+      this.container.lookup('route:application').send(this.get('action'), title, modelType, parentModelType,parentId);
       this.set('title', '');
       this.set('inEditMode', false);
     },

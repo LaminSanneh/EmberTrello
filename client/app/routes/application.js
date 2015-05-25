@@ -3,21 +3,15 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     createNewModel: function(title, modelType, parentModelType, parentId){
-      console.log(arguments);
       var modelProperties = {
         title: title
       };
-
-      //if(modelType == 'card'){
-      //  modelProperties['sortOrder'] =
-      //}
 
       var model = this.store.createRecord(modelType, modelProperties);
 
       this.store.find(parentModelType, parentId).then(function(parentModel){
         var maxSortOrder = null, relatedHasMany;
         model.save().then(function(modelSaved){
-          console.log(parentModel);
           if(modelType == 'card'){
             relatedHasMany = parentModel.get(modelType+'s');
 
@@ -47,7 +41,6 @@ export default Ember.Route.extend({
       });
     },
     updateModel: function(title, model){
-      console.log(arguments);
       model.set('title', title);
       model.save();
     }

@@ -38,23 +38,25 @@ export default Ember.Component.extend({
     this.set('isBeingDraggedOver', false);
     var sourceCard = window.dragSource.get('card'),
         sourceSortOrder = sourceCard.get('sortOrder'),
-        sourceList  = sourceCard.get('list'),
         targetCard = window.dragTarget.get('card'),
+        sourceList  = sourceCard.get('list'),
         targetSortOrder = targetCard.get('sortOrder'),
         targetList  = targetCard.get('list');
 
-    sourceCard.set('sortOrder', targetSortOrder);
-    sourceCard.set('list', targetList);
-    targetCard.set('sortOrder', sourceSortOrder);
-    targetCard.set('list', sourceList);
+    if(sourceCard != targetCard){
+      sourceCard.set('sortOrder', targetSortOrder);
+      sourceCard.set('list', targetList);
+      targetCard.set('sortOrder', sourceSortOrder);
+      targetCard.set('list', sourceList);
 
-    window.dragSource.set('card', targetCard);
-    window.dragTarget.set('card', sourceCard);
+      window.dragSource.set('card', targetCard);
+      window.dragTarget.set('card', sourceCard);
 
-    sourceCard.save();
-    targetCard.save();
+      sourceCard.save();
+      targetCard.save();
+    }
   },
   click: function(){
-    this.get('context.targetObject').transitionToRoute('board.editCard', this.get('card.list.board'), this.get('card'));
+    this.get('context.parentView.targetObject').transitionToRoute('board.editCard', this.get('card.list.board'), this.get('card'));
   }
 });

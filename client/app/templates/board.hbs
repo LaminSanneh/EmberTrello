@@ -1,14 +1,8 @@
 <h2>{{model.title}}</h2>
 <div class="row">
     <div class="lists">
-      {{#each item in model.lists}}
-          <div class="list">
-            {{partial "partials/list-inline-model-editor"}}
-            <div class="list__cards">
-                {{render 'cards' item.cards}}
-                {{partial "partials/card-inline-model-creator"}}
-            </div>
-          </div>
+      {{#each list in model.lists}}
+          {{board-list list=list }}
       {{/each}}
       <div class="list create-list">
         {{partial "partials/list-inline-model-creator"}}

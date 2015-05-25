@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   },
   actions: {
     updateModel: function(title, model){
-      this.sendAction('action', title, model);
+      this.container.lookup('route:application').send(this.get('action'), title, model);
       this.set('title', '');
       this.set('inEditMode', false);
     },
