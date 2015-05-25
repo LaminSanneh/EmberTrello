@@ -5,9 +5,7 @@
           <div class="list">
             {{partial "partials/list-inline-model-editor"}}
             <div class="list__cards">
-                {{#each card in item.cards}}
-                  {{list-card card=card}}
-                {{/each}}
+                {{render 'cards' item.cards}}
                 {{partial "partials/card-inline-model-creator"}}
             </div>
           </div>
