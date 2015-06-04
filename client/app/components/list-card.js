@@ -58,5 +58,12 @@ export default Ember.Component.extend({
   },
   click: function(){
     this.get('context.parentView.targetObject').transitionToRoute('board.editCard', this.get('card.list.board'), this.get('card'));
+  },
+  actions: {
+    deleteCard: function(card){
+      if(confirm('Are you sure you want to delete card')){
+        card.destroyRecord();
+      }
+    }
   }
 });
