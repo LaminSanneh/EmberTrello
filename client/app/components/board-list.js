@@ -25,6 +25,7 @@ export default Ember.Component.extend({
 //  }
   didInsertElement: function(){
     var self = this;
+    this.$().data('id', this.get('list.id'));
     this.$().find(".list__cards").sortable({
       connectWith: ".list__cards",
       update: function(event, ui){
