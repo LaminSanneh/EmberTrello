@@ -1,0 +1,7 @@
+{{#each list in lists}}
+  {{board-list list=list }}
+{{/each}}
+  <div class="list create-list">
+    {{partial "partials/list-inline-model-creator"}}
+  </div>
+{{yield}}

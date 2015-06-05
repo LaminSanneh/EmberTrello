@@ -2,36 +2,37 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNameBindings: ['isBeingDragged', 'isBeingDraggedOver'],
-  attributeBindings: ['draggable'],
+  //attributeBindings: ['draggable'],
   draggable: true,
   classNames: ['card'],
   isBeingDragged: false,
   dragStart: function(e){
     this.set('isBeingDragged', true);
     //this.set('dragSourceElement', this.element);
-    console.log('Drag');
-    console.log(this.get('dragSourceElement'));
-    e.dataTransfer.effectAllowed = 'move';
+    //console.log('Drag');
+    //console.log(this.get('dragSourceElement'));
+    //e.dataTransfer.effectAllowed = 'move';
     window.dragSource = this;
   },
   dragEnd: function(e){
     this.set('isBeingDragged', false);
-    this.set('isBeingDraggedOver', false);
+    //this.set('isBeingDraggedOver', false);
   },
-  dragEnter: function(e){
-    this.set('isBeingDraggedOver', true);
-  },
-  dragLeave: function(e){
-    this.set('isBeingDraggedOver', false);
-  },
-  dragOver: function(e){
-    if (e.preventDefault) {
-      e.preventDefault();
-    }
-
-    e.dataTransfer.dropEffect = 'move';
-  },
+  //dragEnter: function(e){
+  //  this.set('isBeingDraggedOver', true);
+  //  e.dataTransfer.effectAllowed = 'move';
+  //  e.dataTransfer.dropEffect = 'move';
+  //},
+  //dragLeave: function(e){
+  //  this.set('isBeingDraggedOver', false);
+  //},
+  //dragOver: function(e){
+  //  e.dataTransfer.effectAllowed = 'move';
+  //  e.dataTransfer.dropEffect = 'move';
+  //},
   drop: function(e) {
+    console.log('Dropped');
+    return;
     e.preventDefault();
     window.dragTarget = this;
     this.set('isBeingDragged', false);
@@ -65,5 +66,8 @@ export default Ember.Component.extend({
         card.destroyRecord();
       }
     }
+  },
+  didInsertElement: function(){
+    this.$().data('id', this.get('card.id'));
   }
 });

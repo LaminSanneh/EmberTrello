@@ -18,5 +18,6 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 app.import("bower_components/ember-localstorage-adapter/localstorage_adapter.js");
+app.import("bower_components/jquery-ui/jquery-ui.js");
 
 module.exports = app.toTree();
